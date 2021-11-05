@@ -23,11 +23,6 @@ jobs:
         source oe-init-build-env
         sed -i 's%poky%poky-tiny%1' conf/local.conf
         bitbake core-image-minimal
-      run: |
-        mkdir build && cd build
-        conan install ..
-        cmake .. -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release
-        cmake --build .
     - name: WhiteSource Unified Agent Scan
       env:
         WS_APIKEY: ${{secrets.APIKEY}}
